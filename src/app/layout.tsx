@@ -8,7 +8,9 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <head />
-      <body>{children}</body>
+      <body className='bg-gray-800 text-gray-100'>
+        {children}
+      </body>
     </html>
   );
 }
