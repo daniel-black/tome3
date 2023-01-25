@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
-import { DashboardIcon, SearchIcon, ShelvesIcon } from "./Icons";
+import { DashboardIcon, SearchIcon, ShelvesIcon, UserIcon } from "./Icons";
 
 
-export const basePaths = ['dashboard', 'search', 'shelves'] as const;
+export const basePaths = ['dashboard', 'search', 'shelves', 'profile'] as const;
 export type BasePath = typeof basePaths[number];
 
 const icons: Record<BasePath, JSX.Element> = {
   dashboard: <DashboardIcon />,
   search: <SearchIcon />,
   shelves: <ShelvesIcon />,
+  profile: <UserIcon />,
 }
 
 export const ActiveNavLinks = () => {
