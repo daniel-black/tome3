@@ -2,18 +2,22 @@
 
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { SignOutIcon } from "./Icons";
 
 export const SignOut = () => {
   const router = useRouter();
 
-  const handleClickk = () => {
+  const handleClick = () => {
     signOut();
     router.push('/');
   }
 
   return (
-    <button onClick={handleClickk}>
-      Sign Out
+    <button
+      className="text-base text-gray-400 hover:text-gray-300 hover:underline flex"
+      onClick={handleClick}
+    >
+      <SignOutIcon /> Sign Out
     </button>
   );
 }

@@ -15,7 +15,7 @@ export const Avatar = async () => {
           height={30}
           className='rounded-full ring ring-sky-300 shadow'
         />
-        <span className="text-gray-400">
+        <span className="text-gray-400 text-base">
           {session.user?.name?.split(' ')[0]}
         </span>
       </div>
