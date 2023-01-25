@@ -1,10 +1,13 @@
+import { unstable_getServerSession } from "next-auth/next";
 import './globals.css';
 
 export type LayoutProps = {
   children: React.ReactNode;
 };
 
-export default function RootLayout({ children }: LayoutProps) {
+export default async function RootLayout({ children }: LayoutProps) {
+  const session = await unstable_getServerSession();
+  console.log(session);
   return (
     <html lang="en">
       <head />
