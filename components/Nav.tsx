@@ -5,7 +5,7 @@ import { SignOut } from "./SignOut";
 
 const Nav = () => {
   return (
-    <section className="min-h-screen w-48 px-4 py-3 text-lg bg-gray-700 flex flex-col justify-between items-start">
+    <section className="min-h-screen min-w-fit px-4 py-3 text-lg bg-gray-700 flex flex-col justify-between items-start">
       <div className="space-y-3 w-full">
         <Link href={"/dashboard"} className='text-gray-400 text-base font-bold'>☗ Tome</Link>
         <div className="h-[2px] w-full rounded-full bg-gray-600" />

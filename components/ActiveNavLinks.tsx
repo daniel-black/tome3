@@ -23,7 +23,7 @@ export const ActiveNavLinks = () => {
         <Link
           key={path}
           href={`/${path}`}
-          className={`capitalize rounded px-3 py-1 transition-all duration-100 ease-in-out flex items-center ${path === basePath ? 'bg-gray-600 shadow' : 'hover:bg-gray-500 hover:shadow-lg'}`}
+          className={`capitalize rounded pl-2 pr-8 py-1 transition-all duration-100 ease-in-out flex items-center ${path === basePath ? 'bg-gray-600 shadow' : 'hover:bg-gray-500 hover:shadow-lg'}`}
         >
           <span className={`text-gray-400 ${path === basePath ? 'text-gray-300' : ''}`}>{icons[path]}</span>
           <span className={`ml-2 text-gray-300 ${path === basePath ? 'text-gray-200' : ''}`}>{path}</span>
