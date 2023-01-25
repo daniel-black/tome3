@@ -7,7 +7,7 @@ export type LayoutProps = {
 
 export default async function RootLayout({ children }: LayoutProps) {
   const session = await unstable_getServerSession();
-  console.log(session);
+  console.log({session});
   return (
     <html lang="en">
       <head />
