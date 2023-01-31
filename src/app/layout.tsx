@@ -1,4 +1,3 @@
-import { unstable_getServerSession } from "next-auth/next";
 import './globals.css';
 
 export type LayoutProps = {
@@ -6,8 +5,7 @@ export type LayoutProps = {
 };
 
 export default async function RootLayout({ children }: LayoutProps) {
-  const session = await unstable_getServerSession();
-  console.log({session});
+
   return (
     <html lang="en">
       <head />
