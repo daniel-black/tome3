@@ -6,7 +6,7 @@ const OL_URL = 'https://openlibrary.org';
 
 export default async function(
   req: NextApiRequest,
-  res: NextApiResponse<AuthorSearchResponse>
+  res: NextApiResponse<RatingsResponse>
 ) {
   const { method, query } = req;
   if (method !== 'GET') {
@@ -17,9 +17,9 @@ export default async function(
   }
 
   try {
-    const parsedQuery = WorksByAuthorSearchSchema.parse(query);
+    const parsedQuery = RatingsSchema.parse(query);
     
-    const url = new URL(`/authors/${parsedQuery.authorKey}/works.json`, OL_URL);
+    const url = new URL(`/works/${parsedQuery.workKey}/ratings.json?`, OL_URL);
     const olResponse = await fetch(url.toString());
 
     if (!olResponse.ok) {
@@ -29,7 +29,7 @@ export default async function(
     const olResponseData = await olResponse.json();
 
     // parse the response data
-    const parsedResponse = OlWorksByAuthorSearchResponseSchema.parse(olResponseData);
+    const parsedResponse = OlRatingsResponseSchema.parse(olResponseData);
 
     res.status(200).json(parsedResponse);
   } catch (e) {
@@ -37,20 +37,25 @@ export default async function(
   }
 }
 
-const WorksByAuthorSearchSchema = z.object({
-  authorKey: z.string(),
+const RatingsSchema = z.object({
+  workKey: z.string(),
 });
 
-export const OlWorksByAuthorSearchResponseSchema = z.object({
-  size: z.number().nonnegative(),
-  entries: z.array(z.object({
-    covers: z.array(z.number().nullish()).nullish(),
-    key: z.string(),
-    title: z.string(),
-  })),
+export const OlRatingsResponseSchema = z.object({
+  counts: z.object({
+    '1': z.number().nonnegative(),
+    '2': z.number().nonnegative(),
+    '3': z.number().nonnegative(),
+    '4': z.number().nonnegative(),
+    '5': z.number().nonnegative(),
+  }),
+  summary: z.object({
+    average: z.number().nonnegative(),
+    count: z.number().nonnegative(),
+    sortable: z.number().nonnegative(),
+  }),
 });
 
-type OlWorksByAuthorSearchResponse = z.infer<typeof OlWorksByAuthorSearchResponseSchema>;
-export type Entry = Pick<OlWorksByAuthorSearchResponse, 'entries'>;
+type OlRatingsResponse = z.infer<typeof OlRatingsResponseSchema>;
 
-type AuthorSearchResponse = ErrorResponse | OlWorksByAuthorSearchResponse;
+type RatingsResponse = ErrorResponse | OlRatingsResponse;
