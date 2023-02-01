@@ -11,7 +11,7 @@ export default async function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <head />
-      <body className='bg-gray-800 text-gray-100'>
+      <body className='bg-stone-900 text-gray-100'>
         {children}
       </body>
     </html>
