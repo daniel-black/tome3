@@ -1,4 +1,3 @@
-// import { OL_URL } from "constants";
 import { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 import { ErrorResponse } from "./search";
