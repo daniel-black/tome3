@@ -39,7 +39,7 @@ export default async function(
   }
 }
 
-const AuthorSearchSchema = z.object({
+export const AuthorSearchSchema = z.object({
   q: z.string(),
 });
 
@@ -59,7 +59,7 @@ export const OlAuthorSearchResponseSchema = z.object({
   })),
 });
 
-type OlAuthorSearchResponse = z.infer<typeof OlAuthorSearchResponseSchema>;
+export type OlAuthorSearchResponse = z.infer<typeof OlAuthorSearchResponseSchema>;
 export type AuthorDoc = Pick<OlAuthorSearchResponse, 'docs'>;
 
-type AuthorSearchResponse = ErrorResponse | OlAuthorSearchResponse;
+export type AuthorSearchResponse = ErrorResponse | OlAuthorSearchResponse;
