@@ -51,7 +51,7 @@ export const SearchQueryParamsSchema = z.object({
 });
 type SearchQueryParams = z.infer<typeof SearchQueryParamsSchema>;
 
-type ErrorResponse = { error: string };
+export type ErrorResponse = { error: string };
 type SearchResponse = ErrorResponse | OlSearchResponse;
 
 export const OlSearchResponseSchema = z.object({
